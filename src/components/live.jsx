@@ -5,7 +5,7 @@ import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
 import { drawRect } from "./utilities";
 
-function Live({ toggleStates }) {
+function Live({ toggleStates, handlePeopleCounting }) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const net = useRef(null);
@@ -37,7 +37,6 @@ function Live({ toggleStates }) {
       const obj = await net.current.detect(video);
 
       let noProtection = true; // Assume no protection initially
-      // console.log(obj);
 
       // Include only safety items
       const relevantObjects = obj.filter((item) =>
@@ -47,8 +46,9 @@ function Live({ toggleStates }) {
       const persons = relevantObjects.filter((item) => item.class === "person");
 
       /* From here functional logic for each toggle button options*/
-      // draw virtual fence
-      if (toggleStates["vfBtn"]) {
+      // draw object detection
+      if (toggleStates["odBtn"]) {
+        drawRect(relevantObjects, ctx);
       }
 
       // draw ppe
@@ -69,31 +69,33 @@ function Live({ toggleStates }) {
           );
 
           if (hasHelmet && hasGloves) {
-            noProtection = false;
+            setNoProtection(false);
             break; // Exit the loop if a person with both helmet and gloves is found
           }
         }
 
         if (noProtection) {
           ctx.fillStyle = "yellow";
-          ctx.fillText("Wear Protection!", 10, 60);
+          ctx.fillText("Wear Protection!", 10, 30);
         }
-      }
-
-      // draw face recognition
-      if (toggleStates["odBtn"]) {
-        drawRect(relevantObjects, ctx);
       }
 
       // draw people counting
       if (toggleStates["pcBtn"]) {
         const personCount = persons.length;
 
-        const ctx = canvasRef.current.getContext("2d");
+        // // draw person count on canvas
+        // const ctx = canvasRef.current.getContext("2d");
 
-        ctx.fillStyle = "red";
+        // ctx.fillStyle = "red";
 
-        ctx.fillText(`Person Count: ${personCount}`, 10, 30);
+        // ctx.fillText(`Person Count: ${personCount}`, 10, 30);
+
+        handlePeopleCounting(personCount);
+      }
+
+      // draw virtual fence
+      if (toggleStates["vfBtn"]) {
       }
 
       // draw pose estimation

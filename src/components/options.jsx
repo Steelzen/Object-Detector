@@ -1,5 +1,4 @@
 import ToggleButton from "../common/toggleButton";
-import Live from "./live";
 
 const Options = ({ toggleStates, handleToggle }) => {
   return (

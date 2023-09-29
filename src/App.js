@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Offline from "./components/offline";
@@ -11,13 +11,14 @@ import "./App.css";
 
 function App() {
   const [toggleStates, setToggleStates] = useState({
+    odBtn: false,
+    ppeBtn: false,
+    pcBtn: false,
     vfBtn: false,
-    ppeBtn: true,
-    odBtn: true,
-    pcBtn: true,
     peBtn: false,
     fdBtn: false,
   });
+  const [peopleCount, setPeopleCount] = useState(0);
 
   const handleToggle = (buttonId) => {
     setToggleStates((prevState) => ({
@@ -25,6 +26,16 @@ function App() {
       [buttonId]: !prevState[buttonId],
     }));
   };
+
+  const handlePeopleCounting = (number) => {
+    setPeopleCount(number);
+  };
+
+  useEffect(() => {
+    if (!toggleStates["pcBtn"]) {
+      setPeopleCount(0);
+    }
+  }, [toggleStates]);
 
   return (
     <Router>
@@ -41,7 +52,12 @@ function App() {
             <Routes>
               <Route
                 path="/live"
-                element={<Live toggleStates={toggleStates} />}
+                element={
+                  <Live
+                    toggleStates={toggleStates}
+                    handlePeopleCounting={handlePeopleCounting}
+                  />
+                }
               />
               <Route
                 path="/offline"
@@ -50,7 +66,7 @@ function App() {
               <Route path="/history" element={<History />} />
             </Routes>
           </div>
-          <Information />
+          <Information toggleStates={toggleStates} peopleCount={peopleCount} />
         </div>
       </div>
     </Router>
