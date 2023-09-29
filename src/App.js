@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Offline from "./components/offline";
-import Live from "./components/live";
-import History from "./components/history";
+import Offline from "./pages/offline";
+import Live from "./pages/live";
+import History from "./pages/history";
 import Menu from "./components/menu";
 import Options from "./components/options";
 import Information from "./components/information";
