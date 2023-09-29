@@ -81,7 +81,7 @@ function Live({ toggleStates }) {
       }
 
       // draw face recognition
-      if (toggleStates["frBtn"]) {
+      if (toggleStates["odBtn"]) {
         drawRect(relevantObjects, ctx);
       }
 

@@ -45,30 +45,33 @@ function Offline({ toggleStates }) {
   const inputRef = useRef(null);
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>
-        Please wait for a couple minutes after upload photo
-      </h2>
-      {selectedImage ? (
-        <div style={styles.imageContainer}>
-          <img src={selectedImage.src} alt="Uploaded" style={styles.image} />
-          <canvas ref={canvasRef} style={styles.canvas} />
-          <div style={styles.personCount}>Person Count: {personCount}</div>
-        </div>
-      ) : (
-        <div style={styles.buttonContainer}>
-          <button onClick={handleButtonClick} style={styles.button}>
-            Upload Image
-          </button>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            ref={inputRef}
-            style={{ display: "none" }}
-          />
-        </div>
-      )}
+    // <div style={styles.container}>
+    //   <h2 style={styles.heading}>
+    //     Please wait for a couple minutes after upload photo
+    //   </h2>
+    //   {selectedImage ? (
+    //     <div style={styles.imageContainer}>
+    //       <img src={selectedImage.src} alt="Uploaded" style={styles.image} />
+    //       <canvas ref={canvasRef} style={styles.canvas} />
+    //       <div style={styles.personCount}>Person Count: {personCount}</div>
+    //     </div>
+    //   ) : (
+    //     <div style={styles.buttonContainer}>
+    //       <button onClick={handleButtonClick} style={styles.button}>
+    //         Upload Image
+    //       </button>
+    //       <input
+    //         type="file"
+    //         accept="image/*"
+    //         onChange={handleImageUpload}
+    //         ref={inputRef}
+    //         style={{ display: "none" }}
+    //       />
+    //     </div>
+    //   )}
+    // </div>
+    <div className="flex flex-col items-center mt-6">
+      <h2 className="text-xl">Coming Soon</h2>
     </div>
   );
 }

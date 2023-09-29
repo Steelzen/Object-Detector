@@ -7,16 +7,16 @@ const Options = ({ toggleStates, handleToggle }) => {
       <div className="mr-10">
         <ul>
           <li className="flex justify-between items-center mb-2">
-            <span>1. VIRTUAL FENCE</span>
+            <span className="mr-10">1. OBJECT DETECTION</span>
             <ToggleButton
-              id="vfBtn"
-              className="virtual-fence-btn"
-              isToggled={toggleStates.vfBtn}
+              id="odBtn"
+              className="face-recognition-btn"
+              isToggled={toggleStates.odBtn}
               handleToggle={handleToggle}
             />
           </li>
           <li className="flex justify-between items-center mb-2">
-            <span className="mr-4">2. PERSONAL PROTECTIVE EQUIPMENT</span>
+            <span>2. PPE WARNING</span>
             <ToggleButton
               id="ppeBtn"
               className="ppe-btn"
@@ -25,20 +25,20 @@ const Options = ({ toggleStates, handleToggle }) => {
             />
           </li>
           <li className="flex justify-between items-center mb-2">
-            <span>3. FACE RECOGNITION</span>
-            <ToggleButton
-              id="frBtn"
-              className="face-recognition-btn"
-              isToggled={toggleStates.frBtn}
-              handleToggle={handleToggle}
-            />
-          </li>
-          <li className="flex justify-between items-center mb-2">
-            <span>4. PEOPLE COUNTING</span>
+            <span>3. PEOPLE COUNTING</span>
             <ToggleButton
               id="pcBtn"
               className="people-counting-btn"
               isToggled={toggleStates.pcBtn}
+              handleToggle={handleToggle}
+            />
+          </li>
+          <li className="flex justify-between items-center mb-2">
+            <span>4. VIRTUAL FENCE</span>
+            <ToggleButton
+              id="vfBtn"
+              className="virtual-fence-btn"
+              isToggled={toggleStates.vfBtn}
               handleToggle={handleToggle}
             />
           </li>

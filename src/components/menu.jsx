@@ -13,7 +13,7 @@ const Menu = () => {
             <Link to="/offline">UPLOAD VIDEO </Link>
           </li>
           <li className="m-2">
-            <Link to="#">HISTORY</Link>
+            <Link to="/history">HISTORY</Link>
           </li>
         </ul>
       </div>
