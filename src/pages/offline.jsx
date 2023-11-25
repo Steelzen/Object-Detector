@@ -4,6 +4,8 @@ import { drawRect } from "../common/utilities";
 
 function Offline({ toggleStates }) {
   const canvasRef = useRef(null);
+  const inputRef = useRef(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [personCount, setPersonCount] = useState(0);
 
@@ -26,6 +28,8 @@ function Offline({ toggleStates }) {
     drawRect(relevantObjects, ctx, scale);
   };
 
+  const handlevideoUpload = (event) => {};
+
   function handleImageUpload(event) {
     const imageFile = event.target.files[0];
 
@@ -35,14 +39,13 @@ function Offline({ toggleStates }) {
       setPersonCount(0);
       detectImage(imageElement);
     };
+
     imageElement.src = URL.createObjectURL(imageFile);
   }
 
   function handleButtonClick() {
     inputRef.current.click();
   }
-
-  const inputRef = useRef(null);
 
   return (
     // <div style={styles.container}>
