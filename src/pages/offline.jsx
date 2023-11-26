@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import { drawRect } from "../common/utilities";
+import { draw } from "../components/draw";
 
 function Offline({ toggleStates }) {
   const canvasRef = useRef(null);
