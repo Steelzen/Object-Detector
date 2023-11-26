@@ -3,7 +3,7 @@ import { drawRect } from "../common/utilities";
 /** Draw visual mesh  **/
 export const draw = async (
   net,
-  webcamRef,
+  videoRef,
   canvasRef,
   safetyItems,
   setNoProtection,
@@ -11,17 +11,17 @@ export const draw = async (
   handlePeopleCounting
 ) => {
   if (
-    typeof webcamRef.current !== "undefined" &&
-    webcamRef.current !== null &&
-    webcamRef.current.video.readyState === 4
+    typeof videoRef.current !== "undefined" &&
+    videoRef.current !== null &&
+    videoRef.current.video.readyState === 4
   ) {
-    const videoWidth = webcamRef.current.video.videoWidth;
-    const videoHeight = webcamRef.current.video.videoHeight;
+    const videoWidth = videoRef.current.video.videoWidth;
+    const videoHeight = videoRef.current.video.videoHeight;
 
     canvasRef.current.width = videoWidth;
     canvasRef.current.height = videoHeight;
 
-    const video = webcamRef.current.video;
+    const video = videoRef.current.video;
 
     /* Objects Detection */
     // Get objects by coco-ssd
