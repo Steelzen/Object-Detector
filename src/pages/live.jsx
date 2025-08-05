@@ -9,17 +9,19 @@ function Live({ toggleStates, handlePeopleCounting }) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const net = useRef(null);
+  const gloveModel = useRef(null);
   const [noProtection, setNoProtection] = useState(false);
-  const safetyItems = ["helmet", "vest", "gloves", "person"];
+  const safetyItems = ["helmet", "vest", "glove", "person"];
 
   // Load ML model
   useEffect(() => {
-    const runCoco = async () => {
+    const loadModels = async () => {
       net.current = await cocossd.load();
-      console.log("Model loaded. ");
+      gloveModel.current = await tf.loadGraphModel("/web_model_glove/model.json");
+      console.log("Model loaded. : ", net.current, gloveModel.current);
     };
 
-    runCoco();
+    loadModels();
   }, []);
 
   // Draw mesh at each requestAnimationFrame
@@ -31,6 +33,7 @@ function Live({ toggleStates, handlePeopleCounting }) {
         // draw(net);
         draw(
           net,
+          gloveModel,
           webcamRef,
           canvasRef,
           safetyItems,
